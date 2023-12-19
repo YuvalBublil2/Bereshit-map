@@ -3,6 +3,7 @@
 }
 
 #map {
+    margin-bottom: 10px;
     height: 60vh;
     z-index: 1;
 }
