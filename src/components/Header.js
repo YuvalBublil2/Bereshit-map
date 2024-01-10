@@ -1,6 +1,6 @@
 import React from "react";
 
-function HeaderComponent() {
+function Header() {
     return (
     <header className="pb-3">
         <div className="row justify-content-between align-items-center">
@@ -10,4 +10,4 @@ function HeaderComponent() {
     );
 }
 
-export default HeaderComponent;
+export default Header;
