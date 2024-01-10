@@ -1,12 +1,14 @@
 import React from "react";
+import MatbishIcon from './MatbishIcon'; // Import your icon component
 
 function Header() {
     return (
-    <header className="pb-3">
-        <div className="row justify-content-between align-items-center">
-            <h1 className="text-center">Bereshit Map</h1>
-        </div>
-    </header>
+        <header className="pb-3" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ position: 'absolute', left: 0 }}>
+                <MatbishIcon />
+            </div>
+            <h1>Bereshit Map</h1>
+        </header>
     );
 }
 
