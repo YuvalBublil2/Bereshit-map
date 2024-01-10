@@ -43,40 +43,57 @@ function Map() {
         });
     };
 
+    const showUserLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const {latitude, longitude} = position.coords;
+                await findLocation(latitude, longitude, "your location");
+            }, (error) => {
+                console.error("Error Code = " + error.code + " - " + error.message);
+                setLocationMessage("Unable to retrieve your location");
+            });
+        } else {
+            setLocationMessage("Geolocation is not supported by this browser.");
+        }
+    };
+
     const showLocation = async () => {
-        const locationInput = document.getElementById("name-location");
+        const locationInput = document.getElementById("name-location").value;
         try {
-            let data = await handleLocationSearch(locationInput.value);
+            let data = await handleLocationSearch(locationInput);
+            await findLocation(data.lat, data.lon, locationInput);
+        } catch (error) {
+            console.error("Error finding location: " + error.message);
+            setLocationMessage("Error finding location");
+        }
+    };
 
-            if (data && mapRef.current) {
-                const icon = new L.Icon({
-                    iconUrl: markerIconPng,
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34],
-                    shadowSize: [41, 41]
-                });
+    const findLocation = async (latitude, longitude, locationInput) => {
+        try {
+            const icon = new L.Icon({
+                iconUrl: markerIconPng,
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
 
-                const marker = L.marker([data.lat, data.lon], { icon }).addTo(mapRef.current)
-                    .bindPopup(locationInput.value)
-                    .openPopup();
+            const marker = L.marker([latitude, longitude], { icon }).addTo(mapRef.current)
+                .bindPopup(locationInput)
+                .openPopup();
 
-                mapRef.current.setView([data.lat, data.lon], 14);
+            mapRef.current.setView([latitude, longitude], 14);
 
-                localStorage.setItem(locationInput.value, JSON.stringify(locationInput.value));
-                setTimeout(() => {
-                    mapRef.current.removeLayer(marker);
-                }, 10000);
+            localStorage.setItem(locationInput, JSON.stringify(locationInput));
+            setTimeout(() => {
+                mapRef.current.removeLayer(marker);
+            }, 10000);
 
-                const polygonName = locationInPolygons(data.lat, data.lon)
-                if (polygonName) {
-                    setLocationMessage(`The location inside Bereshit ${polygonName}`);
-                } else {
-                    setLocationMessage("Outside of Bereshits area");
-                }
+            const polygonName = locationInPolygons(latitude, longitude)
+            if (polygonName) {
+                setLocationMessage(`The location inside Bereshit ${polygonName}`);
             } else {
-                console.error("Location not found");
-                setLocationMessage("Location not found");
+                setLocationMessage("Outside of Bereshits area");
             }
         } catch (error) {
             console.error("Error finding location: " + error.message);
@@ -114,8 +131,9 @@ function Map() {
                 <input id="name-location" type="text" placeholder="location name" className="form-control"/>
                 <button className="btn btn-primary" onClick={() => showLocation()}>Search</button>
             </div>
+            <button className="btn btn-secondary" onClick={showUserLocation} style={{marginRight: '1%'}}>Get My Location</button>
             <span>{locationMessage}</span>
-            <div id="map" className="p-4 rounded shadow-sm"></div>
+            <div id="map" className="p-4 rounded shadow-sm" style={{marginTop: '1%'}}></div>
         </div>
     );
 }
