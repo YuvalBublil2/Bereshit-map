@@ -4,7 +4,7 @@ import L from 'leaflet';
 import polygonsData from '../polygons.json';
 import { isPointInPolygon } from 'geolib';
 
-function BereshitMap() {
+function Map() {
     const mapRef = useRef(null);
     const [locationMessage, setLocationMessage] = useState('');
 
@@ -45,38 +45,42 @@ function BereshitMap() {
 
     const showLocation = async () => {
         const locationInput = document.getElementById("name-location");
-        let data = handleLocationSearch(locationInput);
+        try {
+            let data = await handleLocationSearch(locationInput.value);
 
-        if (data[0] && mapRef.current) {
-            // Inside your showLocation function
-            const icon = new L.Icon({
-                iconUrl: markerIconPng,
-                iconSize: [25, 41],
-                iconAnchor: [12, 41],
-                popupAnchor: [1, -34],
-                shadowSize: [41, 41]
-            });
+            if (data && mapRef.current) {
+                const icon = new L.Icon({
+                    iconUrl: markerIconPng,
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
 
-            const marker = L.marker([data[0].lat, data[0].lon], { icon }).addTo(mapRef.current)
-                .bindPopup(locationInput.value)
-                .openPopup();
+                const marker = L.marker([data.lat, data.lon], { icon }).addTo(mapRef.current)
+                    .bindPopup(locationInput.value)
+                    .openPopup();
 
-            // Set the map view to the new marker with a higher zoom level
-            mapRef.current.setView([data[0].lat, data[0].lon], 14); // You can adjust the zoom level
+                mapRef.current.setView([data.lat, data.lon], 14);
 
-            localStorage.setItem(locationInput.value, JSON.stringify(locationInput.value));
-            setTimeout(() => {
-                mapRef.current.removeLayer(marker);
-            }, 10000);
-        } else {
-            console.error("Geocoding service could not find location: " + locationInput.value);
-        }
+                localStorage.setItem(locationInput.value, JSON.stringify(locationInput.value));
+                setTimeout(() => {
+                    mapRef.current.removeLayer(marker);
+                }, 10000);
 
-        const polygonName = locationInPolygons(data[0].lat, data[0].lon)
-        if (polygonName) {
-            setLocationMessage(`The location inside Bereshit ${polygonName}`);
-        } else {
-            setLocationMessage("Outside of Bereshits area");
+                const polygonName = locationInPolygons(data.lat, data.lon)
+                if (polygonName) {
+                    setLocationMessage(`The location inside Bereshit ${polygonName}`);
+                } else {
+                    setLocationMessage("Outside of Bereshits area");
+                }
+            } else {
+                console.error("Location not found");
+                setLocationMessage("Location not found");
+            }
+        } catch (error) {
+            console.error("Error finding location: " + error.message);
+            setLocationMessage("Error finding location");
         }
     };
 
@@ -116,4 +120,4 @@ function BereshitMap() {
     );
 }
 
-export default BereshitMap;
+export default Map;
