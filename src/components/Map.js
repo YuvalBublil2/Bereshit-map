@@ -44,17 +44,17 @@ function Map() {
     };
 
     const showUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                const {latitude, longitude} = position.coords;
-                await findLocation(latitude, longitude, "your location");
-            }, (error) => {
-                console.error("Error Code = " + error.code + " - " + error.message);
-                setLocationMessage("Unable to retrieve your location");
-            });
-        } else {
+        if (!navigator.geolocation) {
             setLocationMessage("Geolocation is not supported by this browser.");
         }
+
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const {latitude, longitude} = position.coords;
+            await findLocation(latitude, longitude, "your location");
+        }, (error) => {
+            console.error("Error Code = " + error.code + " - " + error.message);
+            setLocationMessage("Unable to retrieve your location");
+        });
     };
 
     const showLocation = async () => {
@@ -78,7 +78,7 @@ function Map() {
                 shadowSize: [41, 41]
             });
 
-            const marker = L.marker([latitude, longitude], { icon }).addTo(mapRef.current)
+            const marker = L.marker([latitude, longitude], {icon}).addTo(mapRef.current)
                 .bindPopup(locationInput)
                 .openPopup();
 
@@ -131,11 +131,14 @@ function Map() {
                 <input id="name-location" type="text" placeholder="location name" className="form-control"/>
                 <button className="btn btn-primary" onClick={() => showLocation()}>Search</button>
             </div>
-            <button className="btn btn-secondary" onClick={showUserLocation} style={{marginRight: '1%'}}>Get My Location</button>
-            <span>{locationMessage}</span>
-            <div id="map" className="p-4 rounded shadow-sm" style={{marginTop: '1%'}}></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1%' }}>
+                <span>{locationMessage}</span>
+                <button className="btn btn-primary" onClick={showUserLocation}>use your location</button>
+            </div>
+            <div id="map" className="p-4 rounded shadow-sm" style={{ marginTop: '1%' }}></div>
         </div>
     );
+
 }
 
 export default Map;
