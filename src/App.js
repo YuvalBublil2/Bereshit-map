@@ -1,16 +1,16 @@
 import React from 'react';
-import FooterComponent from "./components/FooterComponent";
-import HeaderComponent from "./components/HeaderComponent";
-import BereshitMap from "./components/BereshitMap";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Map from "./components/Map";
 
 function App() {
     return (
         <div className="container mt-4">
-            <HeaderComponent />
+            <Header />
 
-            <BereshitMap />
+            <Map />
 
-            <FooterComponent />
+            <Footer />
         </div>
     );
 }
