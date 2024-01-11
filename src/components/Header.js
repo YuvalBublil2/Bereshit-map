@@ -1,5 +1,5 @@
 import React from "react";
-import MatbishIcon from './MatbishIcon'; // Import your icon component
+import MatbishIcon from './MatbishIcon';
 
 function Header() {
     return (
@@ -7,7 +7,7 @@ function Header() {
             <div style={{ position: 'absolute', left: 0 }}>
                 <MatbishIcon />
             </div>
-            <h1>Bereshit Map</h1>
+            <h3>Bereshit Map</h3>
         </header>
     );
 }
