@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Bereshit-map/static/css/main.41eb74a5.css",
-    "main.js": "/Bereshit-map/static/js/main.99e324e5.js",
-    "static/js/787.d4aba7ab.chunk.js": "/Bereshit-map/static/js/787.d4aba7ab.chunk.js",
-    "index.html": "/Bereshit-map/index.html",
-    "main.41eb74a5.css.map": "/Bereshit-map/static/css/main.41eb74a5.css.map",
-    "main.99e324e5.js.map": "/Bereshit-map/static/js/main.99e324e5.js.map",
-    "787.d4aba7ab.chunk.js.map": "/Bereshit-map/static/js/787.d4aba7ab.chunk.js.map"
+    "main.css": "/YuvalBublil2/Bereshit-map.git/static/css/main.41eb74a5.css",
+    "main.js": "/YuvalBublil2/Bereshit-map.git/static/js/main.f46f4cba.js",
+    "static/js/787.d4aba7ab.chunk.js": "/YuvalBublil2/Bereshit-map.git/static/js/787.d4aba7ab.chunk.js",
+    "index.html": "/YuvalBublil2/Bereshit-map.git/index.html",
+    "main.41eb74a5.css.map": "/YuvalBublil2/Bereshit-map.git/static/css/main.41eb74a5.css.map",
+    "main.f46f4cba.js.map": "/YuvalBublil2/Bereshit-map.git/static/js/main.f46f4cba.js.map",
+    "787.d4aba7ab.chunk.js.map": "/YuvalBublil2/Bereshit-map.git/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.41eb74a5.css",
-    "static/js/main.99e324e5.js"
+    "static/js/main.f46f4cba.js"
   ]
 }
