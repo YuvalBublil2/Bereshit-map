@@ -91,7 +91,7 @@ function Map() {
 
             const polygonName = locationInPolygons(latitude, longitude)
             if (polygonName) {
-                setLocationMessage(`The location inside Bereshit ${polygonName}`);
+                setLocationMessage(`Location In Bereshit ${polygonName}`);
             } else {
                 setLocationMessage("Outside of Bereshits area");
             }

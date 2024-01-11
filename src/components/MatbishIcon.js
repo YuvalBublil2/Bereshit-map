@@ -5,7 +5,7 @@ function MatbishIcon() {
         <div>
             <img
                 key="/icons/matbish.png"
-                src={`/icons/matbish.png`}
+                src={process.env.PUBLIC_URL + `/icons/matbish.png`}
                 alt="Matbish Icon"
                 style={{ width: '70px', height: '70px', cursor: 'pointer', margin: '20%' }}
             />
