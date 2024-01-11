@@ -92,7 +92,7 @@ function Map() {
             const marker = L.marker([latitude, longitude], {icon}).addTo(mapRef.current)
                 .bindPopup(locationInput)
                 .openPopup();
-            marker.bindTooltip(latitude + "," + longitude);
+            marker.bindTooltip(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
 
             if (currentMarker) {
                 mapRef.current.removeLayer(currentMarker);
