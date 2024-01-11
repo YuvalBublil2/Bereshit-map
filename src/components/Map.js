@@ -65,10 +65,6 @@ function Map() {
       const { lat, long } = latlng;
       const locationInput = "Custom Location";
 
-      if (currentMarker) {
-        mapRef.current.removeLayer(currentMarker);
-      }
-
       findLocation(lat, long, locationInput);
     };
 
@@ -96,6 +92,12 @@ function Map() {
             const marker = L.marker([latitude, longitude], {icon}).addTo(mapRef.current)
                 .bindPopup(locationInput)
                 .openPopup();
+            marker.bindTooltip(latitude + "," + longitude);
+
+            if (currentMarker) {
+                mapRef.current.removeLayer(currentMarker);
+            }
+            setCurrentMarker(marker);
 
             mapRef.current.setView([latitude, longitude], 14);
 
