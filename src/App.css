@@ -1,20 +1,29 @@
 #footer {
-    background-color: #f8f9fa;
-    position: absolute;
-    zindex: 2;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    bottom: 1%;
+    z-index: 2;
 }
 
 #header {
     display: flex;
-    align-Items: center;
-    justify-Content: center;
-    margin-Bottom: 3%;
+    align-items: center;
+    justify-content: center;
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 2;
 }
 
 #matbishIcon {
     position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 #map {
@@ -28,15 +37,16 @@
 }
 
 #bereshitMessage {
-    align-items: center;
-    justify-Content: center;
-    width: 120px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.5);
-    borderRadius: 15;
     position: absolute;
-    bottom: 10%;
-    left: 50%;
-    margin-left: -60px;
-    zIndex: 3,
+    bottom: 20%;
+    left: 40%;
+    background-color: rgba(54, 53, 53, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+#bereshitNumberText {
+    color: white;
+    white-space: nowrap;
 }
