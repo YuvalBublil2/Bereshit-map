@@ -17,13 +17,10 @@ function Map() {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                 maxZoom: 18,
             }).addTo(mapRef.current);
-            // Listener for long press
-            mapRef.current.on("contextmenu", handleMapLongPress);
 
             loadPolygonsData();
         }
 
-        // Cleanup function to properly dispose of the map instance
         return () => {
             if (mapRef.current) {
                 mapRef.current.off();
@@ -57,14 +54,6 @@ function Map() {
             console.error("Error Code = " + error.code + " - " + error.message);
             setLocationMessage("Unable to retrieve your location");
         });
-    };
-
-    const handleMapLongPress = (e) => {
-      const { latlng } = e;
-      const { lat, long } = latlng;
-      const locationInput = "Custom Location";
-
-      findLocation(lat, long, locationInput);
     };
 
     const showLocation = async () => {
