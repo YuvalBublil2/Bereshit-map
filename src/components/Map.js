@@ -7,7 +7,6 @@ import { isPointInPolygon } from 'geolib';
 function Map() {
     const mapRef = useRef(null);
     const [locationMessage, setLocationMessage] = useState('');
-    const [currentMarker, setCurrentMarker] = useState(null);
 
     useEffect(() => {
         // Initialize the map only if it's not already initialized
@@ -88,18 +87,12 @@ function Map() {
                 popupAnchor: [1, -34],
                 shadowSize: [41, 41]
             });
+            mapRef.current.setView([latitude, longitude], 14);
 
             const marker = L.marker([latitude, longitude], {icon}).addTo(mapRef.current)
                 .bindPopup(locationInput)
                 .openPopup();
             marker.bindTooltip(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
-
-            if (currentMarker) {
-                mapRef.current.removeLayer(currentMarker);
-            }
-            setCurrentMarker(marker);
-
-            mapRef.current.setView([latitude, longitude], 14);
 
             localStorage.setItem(locationInput, JSON.stringify(locationInput));
 
