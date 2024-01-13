@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Bereshit-map/static/css/main.440529c6.css",
-    "main.js": "/Bereshit-map/static/js/main.5b23a511.js",
+    "main.css": "/Bereshit-map/static/css/main.a26bb3d0.css",
+    "main.js": "/Bereshit-map/static/js/main.b957e58e.js",
     "static/js/787.d4aba7ab.chunk.js": "/Bereshit-map/static/js/787.d4aba7ab.chunk.js",
     "index.html": "/Bereshit-map/index.html",
-    "main.440529c6.css.map": "/Bereshit-map/static/css/main.440529c6.css.map",
-    "main.5b23a511.js.map": "/Bereshit-map/static/js/main.5b23a511.js.map",
+    "main.a26bb3d0.css.map": "/Bereshit-map/static/css/main.a26bb3d0.css.map",
+    "main.b957e58e.js.map": "/Bereshit-map/static/js/main.b957e58e.js.map",
     "787.d4aba7ab.chunk.js.map": "/Bereshit-map/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.440529c6.css",
-    "static/js/main.5b23a511.js"
+    "static/css/main.a26bb3d0.css",
+    "static/js/main.b957e58e.js"
   ]
 }
