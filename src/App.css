@@ -44,6 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 10%;
     background-color: rgba(54, 53, 53, 0.8);
     padding: 10px;

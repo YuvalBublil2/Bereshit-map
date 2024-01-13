@@ -130,11 +130,11 @@ function Map() {
                 <LocationInput onSearch={showLocation} />
             </div>
 
-            <div style={{ display: 'absolute', position: 'absolute', top: '20%', width: '100%', zIndex: 2 }}>
+            <div style={{ display: 'absolute', position: 'absolute', top: '18%', width: '100%', zIndex: 2 }}>
                 <UserLocationButton onClick={showUserLocation} />
             </div>
 
-            <div style={{ position: 'absolute', bottom: '10%', left: '40%', zIndex: 2 }}>
+            <div style={{ position: 'absolute', bottom: '10%', width: '100%', zIndex: 2 }}>
                 {locationMessage &&
                     <LocationMessage message={locationMessage} />
                 }
