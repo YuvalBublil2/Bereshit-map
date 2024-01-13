@@ -5,7 +5,7 @@ function Footer() {
     return (
         <footer id={"footer"}>
             <div>
-                <p style={{color: "black"}}>&copy; By Technological Laboratory</p>
+                <span>&copy; By Technological Laboratory</span>
             </div>
         </footer>
     );

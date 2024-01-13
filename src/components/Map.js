@@ -126,11 +126,11 @@ function Map() {
         <div style={{ position: 'relative', height: '100vh' }}>
             <div id={"map"}></div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', position: 'absolute', top:'15%', width: '100%', zIndex: 2 }}>
+            <div style={{ display: 'absolute', position: 'absolute', top:'15%', width: '100%', zIndex: 2 }}>
                 <LocationInput onSearch={showLocation} />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'left', position: 'absolute', top: '30%', width: '100%', zIndex: 2 }}>
+            <div style={{ display: 'absolute', position: 'absolute', top: '30%', width: '100%', zIndex: 2 }}>
                 <UserLocationButton onClick={showUserLocation} />
             </div>
 
