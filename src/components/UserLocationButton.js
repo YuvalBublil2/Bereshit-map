@@ -1,7 +1,7 @@
 
 const UserLocationButton = ({ onClick }) => {
   return (
-    <button className={"btn btn-primary"} onClick={onClick}>Use your location</button>
+    <button className={"btn btn-primary"} onClick={onClick}>Your location</button>
   );
 };
 
