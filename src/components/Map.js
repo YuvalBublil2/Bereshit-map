@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import LocationInput from './LocationInput';
 import LocationMessage from './LocationMessage';
 import UserLocationButton from './UserLocationButton';
